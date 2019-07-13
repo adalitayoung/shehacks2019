@@ -4,8 +4,9 @@
     type: 'bar',
     data: {
       labels: ["Hazel", "Paul", "Anna"],
+      fontColor: "rgb(255, 255, 255)",
       datasets: [{
-        label: "Me",
+        label: "My Hours",
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: [
           'rgba(255, 99, 132, 1)',
