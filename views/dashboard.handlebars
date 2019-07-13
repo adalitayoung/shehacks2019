@@ -14,36 +14,38 @@
 
       <br>
       <br>
-
-      <div class="org-class">
-        <div class="row">
-          <div class="col">
-            <div class="org">RSCPA</div>
-            <div class="date">14/08/19</div>
-            <div class="descrip">Love dogs</div>
-          </div>
-            <div class="col">
-              <br>
-              <button>MORE INFO</button>
+        {{#history}}
+            <div class="org-class">
+                <div class="row">
+                    <div class="col">
+                        <div class="org">{{Name}}</div>
+                        <div class="date">{{Date}}</div>
+                        <div class="descrip">{{Hours}}</div>
+                    </div>
+                    <div class="col">
+                        <br>
+                        <button>MORE INFO</button>
+                    </div>
+                </div>
             </div>
-        </div>
-      </div>
 
-      <br>
+            <br>
 
-      <div class="org-class">
-        <div class="row">
-          <div class="col">
-            <div class="org">RED CROSS</div>
-            <div class="date">23/08/19</div>
-            <div class="descrip">Support!</div>
-          </div>
-            <div class="col">
-              <br>
-              <button>MORE INFO</button>
-            </div>
-        </div>
-      </div>
+<!--            <div class="org-class">-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <div class="org">RED CROSS</div>-->
+<!--                        <div class="date">23/08/19</div>-->
+<!--                        <div class="descrip">Support!</div>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <br>-->
+<!--                        <button>MORE INFO</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        {{/history}}
+
 
     </div> <!-- END column 1 -->
 
