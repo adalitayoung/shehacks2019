@@ -5,12 +5,16 @@ var FNAME = '.history.json'
 var history;
 
 function load() {
+  if(history) {
+    return;
+  }
+
   var file = fs.readFileSync(FNAME)
   history = JSON.parse(file)
 }
 
 function save() {
-  fs.writeFileSync(FNAME, JSON.stringify(history))
+  fs.writeFileSync(FNAME, JSON.stringify(history, null, 2))
 }
 
 function get() {
@@ -21,10 +25,11 @@ function findUser(id) {
   return history.filter(x => x.Id == id)[0]
 }
 
-function saveEvent(id, eventName, date, hoursWorked) {
+function saveEvent(id, eventId, eventName, date, hoursWorked) {
   var user = findUser(id)
   user.Events.push({
     "Name": eventName,
+    "EventId": eventId, 
     "Date": date.toLocaleDateString(), 
     "Hours": hoursWorked
   })
