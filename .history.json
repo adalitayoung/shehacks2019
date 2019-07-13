@@ -20,6 +20,12 @@
         "Name": "New Event",
         "Date": "13/07/2019",
         "Hours": 1
+      },
+      {
+        "Name": "MS Gong Ride + Wellness Run for Multiple Sclerosis Limited MSL - Health",
+        "EventId": "2",
+        "Date": "7/13/2019",
+        "Hours": 10
       }
     ]
   }
