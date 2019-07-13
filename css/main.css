@@ -98,7 +98,8 @@ img {
     padding: 0;
     width: 200px;
     background-color: #f1f1f1;
-    position: fixed;
+    color: black;
+    /*position: fixed;*/
     height: auto;
     overflow: auto;
 }
@@ -167,3 +168,8 @@ img {
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
+}
+
+#content {
+    color:black;
+}
