@@ -20,7 +20,7 @@ router.get('/history', function(req,res){
     res.sendfile(path.join(__dirname+'/views/history.html'));
 });
 
-
+app.use(express.static(__dirname + '/css'));
 app.use('/', router);
 
 // view engine setup
