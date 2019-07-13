@@ -4,6 +4,8 @@ const path = require('path');
 var cons = require('consolidate');
 const router = express.Router();
 var exphbs  = require('express-handlebars');
+var events = require('./events');
+events.load()
 
 router.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/views/index.html'));

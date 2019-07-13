@@ -17,7 +17,7 @@ function getAllEvents() {
 
 function getNewEventsForUser(id) {
   var events = history.getEventsForUser(id).map(x => x.EventId)
-  return events.filter(x => events.indexOf(x.Id) == -1)
+  return events.filter(x => events.indexOf(x.id) === -1)
 }
 
 module.exports = {
