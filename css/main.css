@@ -15,7 +15,7 @@
 
 body {
   background-color: #333333;
-  padding-top: 80px;
+  padding-top: 120px;
   line-height: 2;
   color: white;
 }
@@ -59,6 +59,7 @@ h2 {
 
 h4 {
   text-align: center;
+  color: #FFBF00;
 }
 
 img {
@@ -67,7 +68,7 @@ img {
 }
 
 .calendar {
-
+  max-width: 100%;
 }
 
 .user-info {
@@ -184,12 +185,15 @@ img {
 } */
 
 hr {
-  color: white;
+  border-top: 1px solid #ffbf00;
 }
 
+/* .container {
+  max-width: 40%;
+} */
+
 .form-container {
-  max-width: 50%;
-  text-align: center;
+  /* max-width: 40%; */
 }
 
 button {
@@ -218,4 +222,39 @@ button {
 
 #content {
       color:black;
+}
+
+.yellow-button {
+  background-color: #ffbf00;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.yellow-button > a {
+  color: white;
+}
+
+#volunteer {
+  min-width: 90%;
+  padding: 10px;
+}
+
+#progress {
+  /* background-color: #ffbf00; */
+  color: #ffbf00;
+}
+
+.barChartArea {
+  label: white;
+}
+
+canvas {
+  background-color: white;
+  height: 300px;
+}
+
+.barChartArea {
+  /* border: 1px solid #ffbf00; */
 }
