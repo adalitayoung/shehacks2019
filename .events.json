@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "Event 1",
+    "description": "Desc",
+    "website": "http://example.org",
+    "lat": -31,
+    "long": 151
+  }
+]
