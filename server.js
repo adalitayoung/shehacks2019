@@ -5,6 +5,8 @@ var cons = require('consolidate');
 const router = express.Router();
 var exphbs  = require('express-handlebars');
 
+app.use(express.static(__dirname + '/css'));
+
 router.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/views/index.html'));
 });
@@ -22,7 +24,7 @@ router.get('/history', function(req,res){
 });
 
 router.get('/dashboard', function(req, res){
-    res.render('dashboard', {"foo": 23})
+    res.render('dashboard', {"name": "Hazel Green", "age": "25", "location": "Surry Hills", "team": "Girl Geek"})
 })
 
 
@@ -38,4 +40,3 @@ app.set('view engine', 'handlebars');
 const server = app.listen(7000, () => {
     console.log(`Express running → PORT ${server.address().port}`);
 });
-

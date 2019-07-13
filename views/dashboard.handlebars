@@ -1,3 +1,64 @@
 
-<h1>Example App: Home</h1>
-{{foo}}
+<h2>Dashboard</h2>
+<!-- {{foo}} -->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h4>Upcoming Events</h4>
+
+
+
+    </div> <!-- END column 1 -->
+
+    <div class="col">
+
+      <h6>You've volunteered</h6><p id="hours">150</p><h6>hours this year.</h6>
+
+      <hr>
+
+      <p>Wow! You're currently in the lead!</p>
+
+      <hr>
+
+      <h4>Leaderboard</h4>
+
+      <div class="barChartArea">
+        <canvas id="barChart"></canvas>
+      </div>
+
+
+    </div> <!-- END column 2 -->
+
+
+    <div class="col">
+
+      <img src="https://themarketingcrowd.ie/wp-content/uploads/2017/01/Round-Profile-Pic.png" alt="profile-image">
+      <br>
+      <hr>
+
+      <h4>Hi, Hazel</h4>
+      <br>
+
+      <div class="user-info">
+        <strong>Name: </strong>{{ name }}
+        <br>
+        <strong>Age: </strong>{{ age }}
+        <br>
+        <strong>Location: </strong>{{ location }}
+        <br>
+        <strong>Team: </strong>{{ team }}
+      </div>
+
+    </div> <!-- END column 3 -->
+
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="mdb.js"></script>
+
+
+
+</div>
