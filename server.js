@@ -40,7 +40,7 @@ router.get('/history', function(req,res){
 
 app.use(express.static(__dirname + '/css'));
 router.get('/dashboard', function(req, res){
-    res.render('dashboard', {"name": "Hazel Green", "age": "25", "location": "Surry Hills", "team": "Girl Geek"})
+    res.render('dashboard', {"name": "Hazel Green", "age": "25", "location": "Surry Hills", "team": "Girl Geek","history":history.getEventsForUser(1)})
 })
 
 

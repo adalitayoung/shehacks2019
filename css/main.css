@@ -36,6 +36,7 @@ nav > a {
 
 .mainContainer {
   min-height: calc( 100vh - 10vw - 6vw );
+    padding-top: 3%;
 }
 
 footer {
@@ -58,8 +59,13 @@ h2 {
 }
 
 h4 {
+<<<<<<< HEAD
   text-align: center;
   color: #FFBF00;
+=======
+  text-align: left;
+    padding-top: 4px;
+>>>>>>> b4d0f544a1696db115c56304fa09069d4b4e7356
 }
 
 img {
@@ -257,4 +263,8 @@ canvas {
 
 .barChartArea {
   /* border: 1px solid #ffbf00; */
+}
+
+td {
+    text-align: center;
 }
