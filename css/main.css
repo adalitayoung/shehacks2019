@@ -107,7 +107,8 @@ img {
     padding: 0;
     width: 200px;
     background-color: #f1f1f1;
-    position: fixed;
+    color: black;
+    /*position: fixed;*/
     height: auto;
     overflow: auto;
 }
@@ -213,4 +214,8 @@ button {
 
 .descrip {
   text-align: left;
+}
+
+#content {
+      color:black;
 }

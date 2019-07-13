@@ -25,7 +25,7 @@ router.get('/signup', function(req, res){
 })
 
 router.get('/map', function(req,res){
-    res.render("map", {"key": process.env.KEY, "events": JSON.stringify(events.getNewEventsForUser(1))});
+    res.render("map", {"key": process.env.KEY, "events": JSON.stringify(events.getNewEventsForUser(1)), "history":history.getEventsForUser(1)});
 });
 
 router.post('/register/:id', function(req, res){
