@@ -54,6 +54,7 @@ h2 {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 20px;
+  color: #FFBF00;
 }
 
 h4 {
@@ -62,10 +63,18 @@ h4 {
 
 img {
   max-width: 200px;
+  /* border: 2px solid #ffbf00; */
+}
+
+.calendar {
+
 }
 
 .user-info {
   text-align: left;
+  border: 2px solid #ffbf00;
+  padding: 15px;
+  font-weight: 10px;
 }
 
 .barChart {
@@ -167,3 +176,41 @@ img {
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
+}
+
+/* .nav-link {
+  color: yellow;
+} */
+
+hr {
+  color: white;
+}
+
+.form-container {
+  max-width: 50%;
+  text-align: center;
+}
+
+button {
+  background-color: #ffbf00;
+}
+
+.org-class {
+  border: 2px solid #ffbf00;
+  font-size: 10px;
+}
+
+.org {
+  text-align: left;
+  font-weight: bold;
+  color: #ffbf00;
+  font-size: 12px;
+}
+
+.date {
+  text-align: left;
+}
+
+.descrip {
+  text-align: left;
+}

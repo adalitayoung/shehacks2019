@@ -15,9 +15,14 @@ router.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
-router.get('/home', function(req,res){
-    res.sendfile(path.join(__dirname+'/views/home.html'));
-});
+// router.get('/signup', function(req,res){
+//     res.sendfile(path.join(__dirname+'/views/signup.handlebars'));
+// });
+
+
+router.get('/signup', function(req, res){
+    res.render('signup')
+})
 
 router.get('/map', function(req,res){
     res.render("map", {"key": process.env.KEY, "events": JSON.stringify(events.getNewEventsForUser(1))});
