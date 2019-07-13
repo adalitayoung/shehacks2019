@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Cancer Council NSW Relay For Life - Committee Members",
+    "description": "Are you interested in organising events? Can you spare an hour a fortnight? We're looking for 3 passionate, personable volunteers to join the committee responsible for running this unique 24 hour fundraising event, taking place on the 5th and 6th August 2019. All funds raised go toward vital cancer research, prevention and support services in the North Sydney area.",
+    "website": "http://example.org",
+    "lat": -33.89,
+    "long": 151.21
+  },
+  {
+    "id": 2,
+    "name": "MS Gong Ride + Wellness Run for Multiple Sclerosis Limited MSL - Health",
+    "description": "Keen to volunteer at one of the largest Cycling events of 2019?",
+    "website": "http://example.org",
+    "lat": -33.8905,
+    "long": 151.213
+  }
+]

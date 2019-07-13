@@ -16,11 +16,24 @@ function getAllEvents() {
 }
 
 function getNewEventsForUser(id) {
-  var events = history.getEventsForUser(id).map(x => x.EventId)
-  return events.filter(x => events.indexOf(x.Id) == -1)
+  return events;
+  // var events = history.getEventsForUser(id).map(x => x.EventId)
+  // return events.filter(x => events.indexOf(x.id) === -1)
+}
+
+function getEventById(id){
+  var returnEvent;
+  events.forEach(function(event){
+    if(event.id == id){
+      returnEvent = event;
+    }
+  });
+  return returnEvent;
+
 }
 
 module.exports = {
   load: load,
-  getNewEventsForUser: getNewEventsForUser
+  getNewEventsForUser: getNewEventsForUser,
+  getEventById: getEventById
 }

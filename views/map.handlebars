@@ -1,0 +1,231 @@
+<!--Map to find opportunities-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Volunteer Help Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        /* The popup bubble styling. */
+        .popup-bubble {
+            /* Position the bubble centred-above its parent. */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -100%);
+            /* Style the bubble. */
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            overflow-y: auto;
+            max-height: 60px;
+            box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.5);
+        }
+        /* The parent of the bubble. A zero-height div at the top of the tip. */
+        .popup-bubble-anchor {
+            /* Position the div a fixed distance above the tip. */
+            position: absolute;
+            width: 100%;
+            bottom: /* TIP_HEIGHT= */ 8px;
+            left: 0;
+        }
+        /* This element draws the tip. */
+        .popup-bubble-anchor::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Center the tip horizontally. */
+            transform: translate(-50%, 0);
+            /* The tip is a https://css-tricks.com/snippets/css/css-triangle/ */
+            width: 0;
+            height: 0;
+            /* The tip is 8px high, and 12px wide. */
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: /* TIP_HEIGHT= */ 8px solid white;
+        }
+        /* JavaScript will position this div at the bottom of the popup tip. */
+        .popup-container {
+            cursor: auto;
+            height: 0;
+            position: absolute;
+            /* The max width of the info window. */
+            width: 200px;
+        }
+    </style>
+    <link rel="stylesheet" href="/main.css">
+
+
+</head>
+<body>
+    <div class = "container" style = "height:50vh">
+        <div class="col">
+            <div class="row">
+                <button onclick="window.location.href = '/'">Log Out</button>
+                <button onclick="window.location.href = '/home'">Home</button>
+                <button onclick="window.location.href = '/history'">History</button>
+            </div>
+            <h2 style="text-align: center;padding: 5%;">Opportunity Map</h2>
+
+            <div class="row" style = "height:50vh">
+                <div id="sidePanel" class="col-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3>Find your Opportunities</h3>
+                            <input type="text" placeholder="Search..">
+                            <h4>Refine</h4>
+                            <div id="refineSearch" class="sidebar">
+                                <a id="frequencySb" href="#frequencySubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Frequency</a>
+                                <ul class="collapse list-unstyled" id="frequencySubmenu">
+                                    <li>
+                                        <input type="checkbox">One off</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">On going</input>
+                                    </li>
+                                </ul>
+                                <a id="durationSb" href="#durationSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Duration</a>
+                                <ul class="collapse list-unstyled" id="durationSubmenu">
+                                    <li>
+                                        <div class="slidecontainer">
+                                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                                            <p id="demo"></p>
+                                        </div>
+                                        <script>
+                                            var slider = document.getElementById("myRange");
+                                            var output = document.getElementById("demo");
+
+                                            output.innerHTML = slider.value; // Display the default slider value
+
+                                            // Update the current slider value (each time you drag the slider handle)
+                                            slider.oninput = function() {
+                                                output.innerHTML = this.value;
+                                            }
+                                        </script>
+                                    </li>
+                                </ul>
+                                <a id="organisationSb" href="#organisationSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Organisation</a>
+                                <ul class="collapse list-unstyled" id="organisationSubmenu">
+                                    <li>
+                                        <input type="checkbox">Red Cross</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Cancer Council</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">She Hacks</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">UTS</input>
+                                    </li>
+                                </ul>
+                                <a id="activitySb" href="#activitySubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Activity</a>
+                                <ul class="collapse list-unstyled" id="activitySubmenu">
+                                    <li>
+                                        <input type="checkbox">Fundraising</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Administration</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Supervision</input>
+                                    </li>
+                                </ul>
+                                <a id="skillSb" href="#skillSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Skill Set</a>
+                                <ul class="collapse list-unstyled" id="skillSubmenu">
+                                    <li>
+                                        <input type="checkbox">None</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Computer Literacy</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Management</input>
+                                    </li>
+                                </ul>
+                                <a id="qualifSb" href="#qualifSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Qualifications</a>
+                                <ul class="collapse list-unstyled" id="qualifSubmenu">
+                                    <li>
+                                        <input type="checkbox">WWCC</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Justice of the Peace</input>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="map" class="col-8"></div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script>
+        var map, popup, Popup;
+        var data = {{{events}}};
+        function apply(id){
+            fetch("/register/"+id, {method: "POST"});
+        }
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -33.890648, lng: 151.212921},
+                zoom: 14
+            });
+
+            data.forEach(function(event){
+                var contentString = '<div id="content">'+
+                        '<div id="siteNotice">'+
+                        '</div>'+
+                        '<h5 id="firstHeading" class="firstHeading">'+event.name+'</h5>'+
+                        '<div id="bodyContent">'+
+                        '<p>'+event.description+'</p>'+
+                        '<p><button href="'+event.website+'">Website</button></p>'+
+                        '<button onclick="apply('+event.id+')">Apply</button>' +
+                        '</div>'+
+                        '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({position: {lat: event.lat, lng: event.long}, map: map, title: event.name});
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"
+            async defer></script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
