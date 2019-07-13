@@ -14,7 +14,7 @@ router.get('/home', function(req,res){
 });
 
 router.get('/map', function(req,res){
-    res.sendfile(path.join(__dirname+'/views/map.html'));
+    res.render("map", {"key": process.env.KEY});
 });
 
 router.get('/history', function(req,res){

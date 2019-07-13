@@ -75,54 +75,127 @@
 </head>
 <body>
     <div class = "container" style = "height:50vh">
-
+        <div class="col">
             <h2 style="text-align: center;padding: 5%;">Opportunity Map</h2>
 
-        <div class="row" style = "height:50vh">
-            <div id="sidePanel" class="col-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3>Find your Opportunities</h3>
-                        <input type="text" placeholder="Search..">
-                        <h4>Refine</h4>
-                        <div id="refineSearch" class="sidebar">
-                            <a id="frequencySb" href="#homeSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Frequency</a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <a href="#">Home 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 3</a>
-                                </li>
-                            </ul>
-<!--                            <a id="durationSb" href="#">Duration</a>-->
-<!--                            <a id="organisationSb" href="#">Organisation</a>-->
-<!--                            <a id="activitySb" href="#">Activity</a>-->
-<!--                            <a id="skillSb" href="#">Skill Set</a>-->
-<!--                            <a id="qualificationsSb" href="#">Qualifications</a>-->
+            <div class="row" style = "height:50vh">
+                <div id="sidePanel" class="col-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3>Find your Opportunities</h3>
+                            <input type="text" placeholder="Search..">
+                            <h4>Refine</h4>
+                            <div id="refineSearch" class="sidebar">
+                                <a id="frequencySb" href="#frequencySubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Frequency</a>
+                                <ul class="collapse list-unstyled" id="frequencySubmenu">
+                                    <li>
+                                        <input type="checkbox">One off</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">On going</input>
+                                    </li>
+                                </ul>
+                                <a id="durationSb" href="#durationSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Duration</a>
+                                <ul class="collapse list-unstyled" id="durationSubmenu">
+                                    <li>
+                                        <div class="slidecontainer">
+                                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                                            <p id="demo"></p>
+                                        </div>
+                                        <script>
+                                            var slider = document.getElementById("myRange");
+                                            var output = document.getElementById("demo");
+
+                                            output.innerHTML = slider.value; // Display the default slider value
+
+                                            // Update the current slider value (each time you drag the slider handle)
+                                            slider.oninput = function() {
+                                                output.innerHTML = this.value;
+                                            }
+                                        </script>
+                                    </li>
+                                </ul>
+                                <a id="organisationSb" href="#organisationSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Organisation</a>
+                                <ul class="collapse list-unstyled" id="organisationSubmenu">
+                                    <li>
+                                        <input type="checkbox">Red Cross</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Cancer Council</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">She Hacks</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">UTS</input>
+                                    </li>
+                                </ul>
+                                <a id="activitySb" href="#activitySubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Activity</a>
+                                <ul class="collapse list-unstyled" id="activitySubmenu">
+                                    <li>
+                                        <input type="checkbox">Fundraising</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Administration</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Supervision</input>
+                                    </li>
+                                </ul>
+                                <a id="skillSb" href="#skillSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Skill Set</a>
+                                <ul class="collapse list-unstyled" id="skillSubmenu">
+                                    <li>
+                                        <input type="checkbox">None</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Computer Literacy</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Management</input>
+                                    </li>
+                                </ul>
+                                <a id="qualifSb" href="#qualifSubmenu" data-toggle="collapse" class="dropdown-toggle collapsed">Qualifications</a>
+                                <ul class="collapse list-unstyled" id="qualifSubmenu">
+                                    <li>
+                                        <input type="checkbox">WWCC</input>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">Justice of the Peace</input>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
+                <div id="map" class="col-8"></div>
+            </div>
+            <div class="row">
+                <button onclick="window.location.href = '/'">Log Out</button>
+                <button onclick="window.location.href = '/home'">Home</button>
+                <button onclick="window.location.href = '/history'">History</button>
             </div>
 
-            <div id="map" class="col-8"></div>
-        </div>
-        <div class="row">
-            <button onclick="window.location.href = '/'">Log Out</button>
-            <button onclick="window.location.href = '/home'">Home</button>
-            <button onclick="window.location.href = '/history'">History</button>
         </div>
 
     </div>
 
     <script>
         var map, popup, Popup;
+        var data = {{{events}}};
         function initMap() {
             // The location of Uluru
+            data.forEach(function(event){
+                var infowindow = new google.maps.InfoWindow({
+                    content: data.contentString
+                });
+
+                var marker = new google.maps.Marker({position: data.test1, map: map, title: 'Uluru (Ayers Rock)'});
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+            });
             var test1 = {lat: -33.89, lng: 151.21};
             var test2 = {lat: -33.8905, lng: 151.213};
             var test3 = {lat: -33.891, lng: 151.21};
@@ -154,6 +227,7 @@
                 '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
                 'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
                 '(last visited June 22, 2009).</p>'+
+                    '<button>Test</button>' +
                 '</div>'+
                 '</div>';
 
@@ -182,7 +256,7 @@
 
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf-6Qtyo87PyJBAXzAqxJL0c51vE0JzmE&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"
             async defer></script>
 
 
